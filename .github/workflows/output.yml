@@ -1,8 +1,8 @@
 name: Output action
 on: workflow_dispatch
 jobs:
-  first-job:
+  print-github-content:
     runs-on: ubuntu-latest
     steps:
       - name: Print github content
-        run: echo ${{toJSON(github)}}
+        run: echo "${{toJSON(github)}}"
