@@ -18,10 +18,10 @@ jobs:
       - name: get repo
         uses: actions/checkout@v3
       - name: setup node
-        uses: actions/seup-node@v3
+        uses: actions/setup-node@v3
       - name: install deps
-        uses: yarn
+        run: yarn
       - name: create build
-        uses: yarn run build
+        run: yarn run build
       - name: deploy
         run: echo deploying...
