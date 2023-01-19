@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+      - name: install deps
+        run: yarn
       - name: create build
         run: yarn run build
       - name: deploy
