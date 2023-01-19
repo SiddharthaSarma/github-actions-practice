@@ -12,3 +12,16 @@ jobs:
         run: yarn
       - name: run test
         run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    setps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/seup-node@v3
+      - name: install deps
+        uses: yarn
+      - name: create build
+        uses: yarn run build
+      - name: deploy
+        run: echo deploying...
