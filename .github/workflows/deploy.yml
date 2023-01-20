@@ -1,9 +1,11 @@
 name: Deploy project
 on:
-  push: main
+  push:
+    branches:
+      - "main"
   pull_request:
     branches:
-      - main
+      - "main"
   workflow_dispatch:
 jobs:
   test:
