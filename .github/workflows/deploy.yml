@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
       - name: install deps
         run: yarn
       - name: run test
@@ -18,8 +16,6 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
       - name: install deps
         run: yarn
       - name: create build
