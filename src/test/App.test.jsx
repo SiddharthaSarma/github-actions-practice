@@ -8,5 +8,5 @@ test("basic test", () => {
 });
 test("handle button", () => {
   const component = renderer.create(<App />);
-  expect(component.root.findByType('button').children.length).toBe(2);
+  expect(component.root.findByType('button').children.length).toBe(1);
 });
