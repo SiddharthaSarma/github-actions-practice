@@ -6,3 +6,8 @@ test("basic test", () => {
   const component = renderer.create(<App />);
   expect(component.toJSON()).toMatchSnapshot();
 });
+ 
+test("handle button", () => {
+  const component = renderer.create(<App />);
+  expect(component.root.findByType('button').children.length).toBe(2);
+});
