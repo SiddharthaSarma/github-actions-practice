@@ -17,6 +17,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/yarn-lock.json') }}
       - name: install deps
         run: yarn
       - name: run test
@@ -31,6 +32,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/yarn-lock.json') }}
       - name: install deps
         run: yarn
       - name: create build
