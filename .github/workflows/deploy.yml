@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: deps-node-modules-${{ hashFiles('**/yarn-lock') }}
+          key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
       - name: install deps
         run: yarn
       - name: run test
@@ -38,7 +38,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: deps-node-modules-${{ hashFiles('**/yarn-lock.json') }}
+          key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
       - name: install deps
         run: yarn
       - name: create build
