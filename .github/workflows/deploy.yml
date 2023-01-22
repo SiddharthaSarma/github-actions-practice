@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
       - name: install deps
         run: yarn
       - name: run test
@@ -23,6 +27,10 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
       - name: install deps
         run: yarn
       - name: create build
