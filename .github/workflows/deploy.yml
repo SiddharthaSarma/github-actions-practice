@@ -13,11 +13,14 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/yarn-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: deps-node-modules-${{ hashFiles('**/yarn-lock') }}
       - name: install deps
         run: yarn
       - name: run test
@@ -28,10 +31,13 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v3
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: deps-node-modules-${{ hashFiles('**/yarn-lock.json') }}
       - name: install deps
         run: yarn
