@@ -16,6 +16,7 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: |
+          echo "$(yarn cache dir)"
           echo "$(yarn config get cacheFolder)"
           echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
@@ -36,6 +37,7 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: |
+          echo "$(yarn cache dir)"
           echo "$(yarn config get cacheFolder)"
           echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
