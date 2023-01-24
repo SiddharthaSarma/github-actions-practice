@@ -1,12 +1,4 @@
 name: Deploy project
-# on:
-#   push:
-#     branches:
-#       - "main"
-#   pull_request:
-#     branches:
-#       - "main"
-#   workflow_dispatch:
 on: workflow_dispatch
 jobs:
   test:
