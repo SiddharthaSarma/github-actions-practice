@@ -1,0 +1,8 @@
+name: Reusable action
+on: workflow_call
+jobs:
+  print-github-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print github content
+        run: echo "${{toJSON(github)}}"

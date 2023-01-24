@@ -1,0 +1,46 @@
+name: Use reusable project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: |
+          echo "$(yarn cache dir)"
+          echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: install deps
+        run: yarn
+      - name: run test
+        run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: |
+          echo "$(yarn cache dir)"
+          echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: install deps
+        run: yarn
+      - name: create build
+        run: yarn run build
+      - name: deploy
+        run: echo deploying...
+      - name: Use reusable
+        uses: ./github/workflows/reusable.yml
