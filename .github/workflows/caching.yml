@@ -12,11 +12,13 @@ jobs:
           echo "$(yarn cache dir)"
           echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
+        id: 'cache-deps'
         uses: actions/cache@v3
         with:
           path: 'node_modules'
           key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
       - name: install deps
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn
       - name: run test
         run: npm run test
@@ -32,11 +34,13 @@ jobs:
           echo "$(yarn cache dir)"
           echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
+        id: 'cache-deps'
         uses: actions/cache@v3
         with:
           path: 'node_modules'
           key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
       - name: install deps
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn
       - name: create build
         run: yarn run build
