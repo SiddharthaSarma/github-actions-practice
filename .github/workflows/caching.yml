@@ -1,4 +1,4 @@
-name: Deploy project
+name: Caching
 on: workflow_dispatch
 jobs:
   test:
