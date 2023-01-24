@@ -43,4 +43,4 @@ jobs:
       - name: deploy
         run: echo deploying...
       - name: Use reusable
-        uses: ./github/workflows/reusable.yml
+        uses: './github/workflows/reusable.yml'
