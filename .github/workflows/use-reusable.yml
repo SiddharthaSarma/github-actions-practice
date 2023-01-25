@@ -42,5 +42,5 @@ jobs:
         run: yarn run build
       - name: deploy
         run: echo deploying...
-      - name: Use reusable
-        uses: ./.github/workflows/reusable.yml
+  Print:
+    uses: ./.github/workflows/reusable.yml
