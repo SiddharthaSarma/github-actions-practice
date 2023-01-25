@@ -1,8 +1,15 @@
 name: Reusable action
 on: workflow_call
+inputs:
+  dummy-text:
+    description: 'Dummy text'
+    required: false
+    default: 'dummy value'
 jobs:
   print-github-content:
     runs-on: ubuntu-latest
     steps:
       - name: Print github content
-        run: echo "${{toJSON(github)}}"
+        run: |
+          echo Printing github content...
+          echo ${{ inputs.dummy-text }}
