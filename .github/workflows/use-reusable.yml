@@ -45,4 +45,4 @@ jobs:
   Print:
     uses: ./.github/workflows/reusable.yml
     with:
-      dummy-value: 'dummy content from use-reusable workflow'
+      dummy-text: 'dummy content from use-reusable workflow'
