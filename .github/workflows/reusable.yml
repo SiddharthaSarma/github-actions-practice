@@ -1,10 +1,11 @@
 name: Reusable action
-on: workflow_call
-inputs:
-  dummy_text:
-    description: 'Dummy text'
-    required: false
-    default: 'dummy value'
+on: 
+  workflow_call:
+    inputs:
+      dummy-text:
+        description: 'Dummy text'
+        required: false
+        default: 'dummy value'
 jobs:
   print-github-content:
     runs-on: ubuntu-latest
@@ -12,4 +13,4 @@ jobs:
       - name: Print github content
         run: |
           echo Printing github content...
-          echo ${{ inputs.dummy_text }}
+          echo ${{ inputs.dummy-text }}
