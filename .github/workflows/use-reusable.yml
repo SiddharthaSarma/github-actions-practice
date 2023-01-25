@@ -44,3 +44,5 @@ jobs:
         run: echo deploying...
   Print:
     uses: ./.github/workflows/reusable.yml
+    with:
+      dummy-text: 'dummy content from use-reusable workflow'
