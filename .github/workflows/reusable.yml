@@ -4,6 +4,7 @@ on:
     inputs:
       dummy-text:
         description: 'Dummy text'
+        type: string
         required: false
         default: 'dummy value'
 jobs:
