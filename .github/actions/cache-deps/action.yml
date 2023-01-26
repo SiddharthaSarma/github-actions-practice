@@ -5,6 +5,10 @@ inputs:
     description: Do you want to cache?
     default: 'true'
     required: false
+outputs:
+  result:
+    description: Used cached dependencies?
+    value: ${{ steps.installed-deps.outputs.cached }}
 runs:
   using: "composite"
   steps:
@@ -16,6 +20,9 @@ runs:
         path: 'node_modules'
         key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
     - name: install deps
+      id: installed-deps
       if: steps.cache-deps.outputs.cache-hit != 'true' || inputs.caching != 'true'
-      run: yarn
+      run: |
+        yarn
+        echo "cached='${{ inputs.caching }}'" >> $GITHUB_OUTPUT
       shell: bash

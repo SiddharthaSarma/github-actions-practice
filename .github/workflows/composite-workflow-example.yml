@@ -20,6 +20,8 @@ jobs:
         uses: ./.github/actions/cache-deps
         with:
           caching: 'false'
+      - name: check cached dependencies
+        run: echo "${{ steps.cached-deps.outputs.result }}"
       - name: run test
         run: yarn test
   deploy:
@@ -29,7 +31,10 @@ jobs:
       - name: get repo
         uses: actions/checkout@v3
       - name: Install and cache dependencies
+        id: cached-deps
         uses: ./.github/actions/cache-deps
+      - name: check cached dependencies
+        run: echo "${{ steps.cached-deps.outputs.result }}"
       - name: create build
         run: yarn build
       - name: deploy
