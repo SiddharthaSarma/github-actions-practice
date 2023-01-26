@@ -48,3 +48,10 @@ jobs:
       dummy-text: 'dummy content from use-reusable workflow'
     secrets:
       dummy-secret: ${{ secrets.TEST_SECRET }}
+  collect_output:
+    name: Collect output
+    needs: Print
+    steps:
+      - name: Print output of reusable workflow
+        run: echo ${{ needs.Print.outputs.result }}
+    
