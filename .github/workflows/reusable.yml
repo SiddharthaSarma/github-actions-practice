@@ -28,4 +28,4 @@ jobs:
           echo ${{ secrets.dummy-secret }}
       - name: output
         id: job-output
-        run: echo "step-result = success" >> $GITHUB_OUTPUT
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
