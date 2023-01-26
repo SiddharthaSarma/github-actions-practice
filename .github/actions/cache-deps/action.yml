@@ -25,5 +25,5 @@ runs:
       shell: bash
     - name: check cashed
       id: installed-deps
-      run: echo "cached=dummy" >> $GITHUB_OUTPUT
+      run: echo "cached='${{ inputs.caching }}'" >> $GITHUB_OUTPUT
       shell: bash
