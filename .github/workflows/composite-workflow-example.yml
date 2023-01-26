@@ -1,0 +1,24 @@
+name: Composite Example workflow
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Install and cache dependencies
+        uses: ./.github/actions/cache-deps
+      - name: run test
+        run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Install and cache dependencies
+        uses: ./.github/actions/cache-deps
+      - name: create build
+        run: yarn run build
+      - name: deploy
+        run: echo deploying...

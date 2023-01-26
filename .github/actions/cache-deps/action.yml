@@ -1,0 +1,14 @@
+name: 'Get and Cache dependencies'
+description: 'Get and cache node modules'
+runs:
+  using: "composite"
+  steps:
+    - name: Cache dependencies
+      id: 'cache-deps'
+      uses: actions/cache@v3
+      with:
+        path: 'node_modules'
+        key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
+    - name: install deps
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      run: yarn
