@@ -10,9 +10,15 @@ on:
     secrets:
       dummy-secret:
         required: true
+    outputs:
+      result: 
+        description: 'Result of the reusable action'
+        value: ${{jobs.print-github-content.outputs.outcome}}
       
 jobs:
   print-github-content:
+    outputs:
+      outcome: ${{steps.job-output.outputs.setp-result}}
     runs-on: ubuntu-latest
     steps:
       - name: Print github content
@@ -20,3 +26,6 @@ jobs:
           echo Printing github content...
           echo ${{ inputs.dummy-text }}
           echo ${{ secrets.dummy-secret }}
+      - name: output
+        id: job-output
+        run: echo "step-result = success" >> $GITHUB_OUTPUT
