@@ -18,7 +18,7 @@ on:
 jobs:
   print-github-content:
     outputs:
-      outcome: ${{steps.job-output.outputs.setp-result}}
+      outcome: ${{steps.job-output.outputs.step-result}}
     runs-on: ubuntu-latest
     steps:
       - name: Print github content
