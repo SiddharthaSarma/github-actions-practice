@@ -46,3 +46,5 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       dummy-text: 'dummy content from use-reusable workflow'
+    secrets:
+      dummy-secret: ${{ secrets.TEST_SECRET }}
