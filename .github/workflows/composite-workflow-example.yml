@@ -1,0 +1,41 @@
+name: Composite Example workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Install and cache dependencies
+        uses: ./.github/actions/cache-deps
+      - name: create build
+        run: yarn build
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Install and cache dependencies
+        uses: ./.github/actions/cache-deps
+        with:
+          caching: 'false'
+      - name: check cached dependencies
+        run: echo "${{ steps.cached-deps.outputs.result }}"
+      - name: run test
+        run: yarn test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: get repo
+        uses: actions/checkout@v3
+      - name: Install and cache dependencies
+        id: cached-deps
+        uses: ./.github/actions/cache-deps
+      - name: check cached dependencies
+        run: echo "${{ steps.cached-deps.outputs.result }}"
+      - name: create build
+        run: yarn build
+      - name: deploy
+        run: echo deploying...
