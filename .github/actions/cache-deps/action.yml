@@ -20,9 +20,10 @@ runs:
         path: 'node_modules'
         key: deps-node-modules-${{ hashFiles('**/yarn.lock') }}
     - name: install deps
-      id: installed-deps
       if: steps.cache-deps.outputs.cache-hit != 'true' || inputs.caching != 'true'
-      run: |
-        echo "cached=dummy" >> $GITHUB_OUTPUT
-        yarn
+      run: yarn
+      shell: bash
+    - name: check cashed
+      id: installed-deps
+      run: echo "cached=dummy" >> $GITHUB_OUTPUT
       shell: bash
