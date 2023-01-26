@@ -54,5 +54,5 @@ jobs:
     needs: Print
     steps:
       - name: Print output of reusable workflow
-        run: echo ${{ needs.Print.outputs.result }}
+        run: echo "${{ needs.Print.outputs.result }}"
     

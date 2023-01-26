@@ -13,12 +13,12 @@ on:
     outputs:
       result: 
         description: 'Result of the reusable action'
-        value: ${{jobs.print-github-content.outputs.outcome}}
+        value: ${{ jobs.print-github-content.outputs.outcome }}
       
 jobs:
   print-github-content:
     outputs:
-      outcome: ${{steps.job-output.outputs.step-result}}
+      outcome: ${{ steps.job-output.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: Print github content
