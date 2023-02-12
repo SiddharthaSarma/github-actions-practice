@@ -1,3 +1,4 @@
+// https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
 const core = require("@actions/core");
 const github = require("@actions/github");
 
